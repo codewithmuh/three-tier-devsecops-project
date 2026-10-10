@@ -10,3 +10,9 @@ venv
 
 notes.txt
 .pem
+# Never commit keys or credentials
+*.pem
+*.key
+*.tfvars
+.env
+.env.*

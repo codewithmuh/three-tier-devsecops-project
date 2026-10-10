@@ -25,13 +25,13 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                 dir('app-code/frontend/notes-frontend') {
+                    // Server URL and token come from Jenkins (Manage Jenkins → System → SonarQube servers → 'sonar-server'),
+                    // injected by withSonarQubeEnv as SONAR_HOST_URL / SONAR_AUTH_TOKEN. Never hardcode them here.
                     withSonarQubeEnv('sonar-server') {
                         sh ''' 
                             $SCANNER_HOME/bin/sonar-scanner \
                             -Dsonar.projectKey=frontend \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.244.210.204:9000 \
-                            -Dsonar.login=sqp_28cec81454b231cb6e7548987c134fe9213a0e93
+                            -Dsonar.sources=.
                         '''
                     }
                 }
