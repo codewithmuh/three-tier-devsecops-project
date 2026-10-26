@@ -1,19 +1,40 @@
 # Three-Tier DevSecOps Project on AWS EKS
 
-Deploy a React + Django + PostgreSQL application to **Amazon EKS** with a security-first CI/CD pipeline:
-**Jenkins** builds and scans every change (SonarQube, OWASP Dependency-Check, Trivy), pushes images to **Amazon ECR**,
-and **Argo CD** deploys them GitOps-style. **Prometheus** and **Grafana** watch the cluster.
-The Jenkins server itself is provisioned with **Terraform**.
+Deploy a full-stack React + Django + PostgreSQL application to **Amazon EKS** with an enterprise-grade, security-first CI/CD pipeline:
+**Jenkins** builds and automates code security scans (**SonarQube**, **OWASP Dependency-Check**, **Trivy**), pushes container images to **Amazon ECR**, and **Argo CD** continuously deploys them GitOps-style. **Prometheus** and **Grafana** provide real-time cluster observability. The entire Jenkins infrastructure is provisioned with **Terraform**.
 
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UC1HEefoqUWmztGZ_Laq28sw)](https://youtube.com/@codewithmuh)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Rashid-blue)](https://www.linkedin.com/in/muhammadrashid-daha/)
-[![Medium](https://img.shields.io/badge/Medium-codewithmuh-black)](https://medium.com/@codewithmuh)
+[![Release](https://img.shields.io/github/v/release/codewithmuh/three-tier-devsecops-project?style=flat-square&color=blue)](https://github.com/codewithmuh/three-tier-devsecops-project/releases)
+[![Stars](https://img.shields.io/github/stars/codewithmuh/three-tier-devsecops-project?style=flat-square&color=gold)](https://github.com/codewithmuh/three-tier-devsecops-project/stargazers)
+[![Forks](https://img.shields.io/github/forks/codewithmuh/three-tier-devsecops-project?style=flat-square&color=blueviolet)](https://github.com/codewithmuh/three-tier-devsecops-project/network/members)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![secret-scan](https://github.com/codewithmuh/three-tier-devsecops-project/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/codewithmuh/three-tier-devsecops-project/actions/workflows/secret-scan.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![YouTube](https://img.shields.io/badge/YouTube-codewithmuh-red?style=flat-square&logo=youtube)](https://youtube.com/@codewithmuh)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Rashid-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/muhammadrashid-daha/)
 
 📺 **Video walkthrough:** https://youtu.be/UNF5JdUEfh8 &nbsp;·&nbsp; 📝 **Article:** [Deploying a three-tier DevSecOps web application on AWS EKS](https://www.linkedin.com/pulse/deploying-three-tier-devsecops-web-application-aws-eks-rashid-x7f9f/)
 
 <img width="1280" height="720" alt="Three-tier DevSecOps project on AWS EKS" src="https://github.com/user-attachments/assets/a73bdc63-28f2-4a53-97ce-36313d8e412b" />
+
+---
+
+## 📑 Table of Contents
+- [Architecture & Workflow](#architecture)
+- [Tech Stack](#tech-stack)
+- [Repository Layout](#repository-layout)
+- [Pipeline Stages & Security Gates](#pipeline-stages)
+- [Prerequisites](#prerequisites)
+- [Setup & Deployment Guide](#setup)
+  - [1. Provision Jenkins Server with Terraform](#1-provision-the-jenkins-server-with-terraform)
+  - [2. Configure SonarQube Quality Gate](#2-configure-sonarqube)
+  - [3. Configure Jenkins Pipelines & Credentials](#3-configure-jenkins)
+  - [4. Create EKS Cluster and Load Balancer Controller](#4-create-the-eks-cluster-and-load-balancer-controller)
+  - [5. Prepare Namespace and Database Secrets](#5-prepare-the-namespace-and-database-secret)
+  - [6. GitOps Continuous Delivery with Argo CD](#6-install-argo-cd-and-deploy)
+  - [7. Cluster Observability with Prometheus & Grafana](#7-monitoring-with-prometheus-and-grafana)
+- [Security Practices Implemented](#security-practices-in-this-project)
+- [Clean Up](#clean-up)
+- [Author & Community](#author)
+- [License](#license)
 
 ---
 
