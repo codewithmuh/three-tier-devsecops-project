@@ -1,0 +1,45 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve the DevSecOps project
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please ensure sensitive credentials (passwords, tokens, AWS keys) are redacted.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: A concise summary of the bug
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the issue
+      placeholder: |
+        1. Run `terraform apply` in jenkins-server-terraform
+        2. Trigger Jenkins pipeline `app-code/Jenkinsfile`
+        3. See error ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Cloud provider, Kubernetes version, Terraform version, OS
+      value: |
+        - Cloud / Local: AWS / Minikube
+        - Terraform Version:
+        - Kubernetes Version:
+        - OS: Ubuntu 22.04 / macOS / Windows
+    validations:
+      required: false
