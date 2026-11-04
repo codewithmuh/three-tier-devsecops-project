@@ -14,19 +14,35 @@ spec:
       maxSurge: 1
       maxUnavailable: 25%
   selector: 
-    matchLabels:
+    matchLabels: 
       role: api
   template:
     metadata:
-      labels:
+      labels: 
         role: api
-    spec:
+    spec: 
       imagePullSecrets:
       - name: ecr-registry-secret
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 2000
       containers:
       - name: api
         image: 167365792572.dkr.ecr.us-west-2.amazonaws.com/backend:1
         imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
         env:
           - name: POSTGRES_CONN_STR
             value: postgresql://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@postgres-svc:5432/mydatabase
@@ -48,8 +64,9 @@ spec:
           httpGet:
             path: /api
             port: 8000
-          initialDelaySeconds: 2
-          periodSeconds: 5
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
         readinessProbe:
           httpGet:
             path: /api

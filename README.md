@@ -6,10 +6,12 @@ Deploy a full-stack React + Django + PostgreSQL application to **Amazon EKS** wi
 [![Release](https://img.shields.io/github/v/release/codewithmuh/three-tier-devsecops-project?style=flat-square&color=blue)](https://github.com/codewithmuh/three-tier-devsecops-project/releases)
 [![Stars](https://img.shields.io/github/stars/codewithmuh/three-tier-devsecops-project?style=flat-square&color=gold)](https://github.com/codewithmuh/three-tier-devsecops-project/stargazers)
 [![Forks](https://img.shields.io/github/forks/codewithmuh/three-tier-devsecops-project?style=flat-square&color=blueviolet)](https://github.com/codewithmuh/three-tier-devsecops-project/network/members)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
-[![secret-scan](https://github.com/codewithmuh/three-tier-devsecops-project/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/codewithmuh/three-tier-devsecops-project/actions/workflows/secret-scan.yml)
-[![YouTube](https://img.shields.io/badge/YouTube-codewithmuh-red?style=flat-square&logo=youtube)](https://youtube.com/@codewithmuh)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad%20Rashid-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/muhammadrashid-daha/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/codewithmuh/three-tier-devsecops-project?color=blue&logo=github)](https://github.com/codewithmuh/three-tier-devsecops-project/releases)
+[![Community Standards](https://img.shields.io/badge/Community%20Standards-100%25-brightgreen.svg?logo=github)](https://github.com/codewithmuh/three-tier-devsecops-project/community)
+[![Security: Gitleaks](https://img.shields.io/badge/Security-Gitleaks%20Active-blue.svg?logo=githubactions&logoColor=white)](.github/workflows/security.yml)
+[![Trivy](https://img.shields.io/badge/Vulnerability%20Scan-Trivy-007acc?logo=aqua&logoColor=white)](https://trivy.dev/)
+[![SonarQube](https://img.shields.io/badge/SAST-SonarQube-4B9CD3?logo=sonarqube&logoColor=white)](https://www.sonarqube.org/)
 
 📺 **Video walkthrough:** https://youtu.be/UNF5JdUEfh8 &nbsp;·&nbsp; 📝 **Article:** [Deploying a three-tier DevSecOps web application on AWS EKS](https://www.linkedin.com/pulse/deploying-three-tier-devsecops-web-application-aws-eks-rashid-x7f9f/)
 
