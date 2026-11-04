@@ -7,7 +7,7 @@ metadata:
     role: frontend
     env: demo
 spec: 
-  replicas: 1
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -23,12 +23,42 @@ spec:
     spec: 
       imagePullSecrets:
       - name: ecr-registry-secret
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 2001
       containers:
       - name: frontend
         image: 167365792572.dkr.ecr.us-west-2.amazonaws.com/frontend:1
         imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         env:
           - name: REACT_APP_BACKEND_URL
             value: "http://api.dovz.shop/api/notes/"
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 15
+          timeoutSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1

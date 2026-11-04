@@ -15,9 +15,16 @@ spec:
     spec: 
       containers:
       - name: postgres
-        image: postgres:latest
+        image: postgres:15-alpine
         ports:
         - containerPort: 5432
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi
         env: 
           - name: POSTGRES_USER
             valueFrom:
@@ -31,6 +38,23 @@ spec:
                 key: password
           - name: POSTGRES_DB
             value: mydatabase
+        livenessProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - pg_isready -U $(POSTGRES_USER) -d $(POSTGRES_DB)
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - pg_isready -U $(POSTGRES_USER) -d $(POSTGRES_DB)
+          initialDelaySeconds: 5
+          periodSeconds: 5
         volumeMounts:
           - name: postgres-volume
             mountPath: /var/lib/postgresql/data
